@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">مون</string>
+    <string name="email">ایمیل</string>
+    <string name="password">رمزعبور</string>
+    <string name="confirm_password">تکرار رمزعبور</string>
+    <string name="sign_in">ورود</string>
+    <string name="sign_up">عضویت</string>
+    <string name="dont_have_account"><u>قبلا ثبت نام نکردی؟</u></string>
+    <string name="have_account"><u>قبلا ثبت نام کردی؟</u></string>
+    <string name="forgot_password"><u>رمزعبورت رو فراموش کردی؟</u></string>
+    <string name="username">نام کاربری</string>
+    <string name="merge">ادغام</string>
+    <string name="branch">زیرشاخه</string>
+    <string name="title">عنوان</string>
+    <string name="story_content">متن</string>
+</resources>

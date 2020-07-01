@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/add_story_nav_graph"
+    app:startDestination="@id/selectCategoryFragment">
+
+    <fragment
+        android:id="@+id/selectCategoryFragment"
+        android:name="com.moon.ui.story.fragment.SelectCategoryFragment"
+        android:label="SelectCategoryFragment"
+        tools:layout="@layout/fragment_select_category">
+        <action
+            android:id="@+id/action_selectCategoryFragment_to_addStoryContentFragment"
+            app:destination="@id/addStoryContentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addStoryContentFragment"
+        android:name="com.moon.ui.story.fragment.AddStoryContentFragment"
+        android:label="AddStoryContentFragment"
+        tools:layout="@layout/fragment_add_story_content">
+        <action
+            android:id="@+id/action_addStoryContentFragment_to_selectLabelFragment"
+            app:destination="@id/selectLabelFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectLabelFragment"
+        android:name="com.moon.ui.story.fragment.SelectLabelFragment"
+        android:label="SelectLabelFragment"
+        tools:layout="@layout/fragment_select_label"/>
+</navigation>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- margins -->
+    <dimen name="margin_small">4dp</dimen>
+    <dimen name="margin_normal">8dp</dimen>
+    <dimen name="margin_above_normal">16dp</dimen>
+    <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_above_large">64dp</dimen>
+
+    <!-- radius -->
+    <dimen name="radius_small">2dp</dimen>
+    <dimen name="radius_above_small">4dp</dimen>
+    <dimen name="radius_normal">5dp</dimen>
+    <dimen name="radius_above_normal">8dp</dimen>
+    <dimen name="radius_large">12dp</dimen>
+    <dimen name="radius_above_large">16dp</dimen>
+
+    <!-- padding -->
+    <dimen name="padding_small">4dp</dimen>
+    <dimen name="padding_normal">8dp</dimen>
+    <dimen name="padding_above_normal">16dp</dimen>
+    <dimen name="padding_large">32dp</dimen>
+    <dimen name="padding_above_large">64dp</dimen>
+
+
+    <!-- textSize -->
+    <dimen name="text_size_small">4sp</dimen>
+    <dimen name="text_size_above_small">8sp</dimen>
+    <dimen name="text_size_normal">10sp</dimen>
+    <dimen name="text_size_above_normal">12sp</dimen>
+    <dimen name="text_size_large">14sp</dimen>
+    <dimen name="text_size_above_large">16sp</dimen>
+
+    <dimen name="text_size_title">20sp</dimen>
+</resources>

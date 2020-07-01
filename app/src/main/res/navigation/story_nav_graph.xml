@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/story_nav_graph"
+    app:startDestination="@id/storyListFragment">
+
+    <fragment
+        android:id="@+id/storyListFragment"
+        android:name="com.moon.ui.story.fragment.StoryListFragment"
+        android:label="StoryListFragment"
+        tools:layout="@layout/fragment_story_list">
+        <action
+            android:id="@+id/asShowListToShowStoryFragment"
+            app:destination="@id/showStoryFragment"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/showStoryFragment"
+        android:name="com.moon.ui.story.fragment.ShowStoryFragment"
+        android:label="ShowListFragment"
+        tools:layout="@layout/fragment_show_story">
+        <argument
+            android:name="story"
+            app:argType="com.moon.model.Story"
+            app:nullable="true" />
+
+    </fragment>
+</navigation>

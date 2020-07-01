@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item  android:drawable="@drawable/bg_splash">
+    </item>
+
+    <item android:top="128dp"  android:gravity="top">
+        <animated-rotate android:pivotX="50%" android:pivotY="50%">
+            <bitmap android:gravity="top" android:src="@drawable/moon" android:filter="true"/>
+
+        </animated-rotate>
+
+    </item>
+
+    <item android:top="256dp" android:gravity="top|center" >
+        <bitmap android:gravity="top" android:src="@drawable/logo_light"
+            android:width="50dp" android:height="50dp"/>
+    </item>
+</layer-list>

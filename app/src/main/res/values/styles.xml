@@ -1,0 +1,37 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="buttonStyle">@style/ButtonStyle</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
+        <!-- attrs values -->
+        <item name="colorBase">@color/colorSoftWhite</item>
+        <item name="colorSecondary">@color/colorSoftBlack</item>
+        <item name="textColorBase">@color/colorSoftBlack</item>
+        <item name="textColorSecond">@color/colorSoftWhite</item>
+        <item name="colorDark">@color/colorBlack</item>
+        <item name="colorLight">@color/colorWhite</item>
+        <item name="colorControlNormal">@color/colorAccent</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@drawable/bg_splash_activity</item>
+
+    </style>
+
+    <style name="TextInputLayoutAppearanceLight" parent="Widget.Design.TextInputLayout">
+        <!-- reference our hint & error styles -->
+    </style>
+
+    <style name="ButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+</resources>

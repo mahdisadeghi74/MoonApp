@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/mnBranch"
+        android:icon="@drawable/ic_branching"
+        android:title="@string/branch"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/mnMerge"
+        android:icon="@drawable/ic_merge_type_24"
+        android:title="@string/merge"
+        app:showAsAction="ifRoom"/>
+</menu>

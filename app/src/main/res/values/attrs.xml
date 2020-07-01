@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="ds_color">
+        <attr name="textColorBase" format="color"/>
+        <attr name="textColorSecond" format="color"/>
+        <attr name="colorBase" format="color"/>
+        <attr name="colorSecond" format="color"/>
+        <attr name="colorDark" format="color"/>
+        <attr name="colorLight" format="color"/>
+    </declare-styleable>
+
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Moon</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="sign_up">Sign up</string>
+    <string name="dont_have_account"><u>Don\'t have an account?</u></string>
+    <string name="have_account"><u>Have an account?</u></string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
+    <string name="username">Username</string>
+    <string name="merge">merge</string>
+    <string name="branch">Branch</string>
+    <string name="title">Title</string>
+    <string name="story_content">Content</string>
+</resources>
