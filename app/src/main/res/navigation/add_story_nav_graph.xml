@@ -12,7 +12,11 @@
         tools:layout="@layout/fragment_select_category">
         <action
             android:id="@+id/action_selectCategoryFragment_to_addStoryContentFragment"
-            app:destination="@id/addStoryContentFragment" />
+            app:destination="@id/addStoryContentFragment"
+            app:enterAnim="@anim/anim_slide_left_enter"
+            app:exitAnim="@anim/anim_slide_left_exit"
+            app:popEnterAnim="@anim/anim_slide_left_enter_pop"
+            app:popExitAnim="@anim/anim_slide_left_exit_pop"/>
     </fragment>
     <fragment
         android:id="@+id/addStoryContentFragment"
@@ -21,11 +25,23 @@
         tools:layout="@layout/fragment_add_story_content">
         <action
             android:id="@+id/action_addStoryContentFragment_to_selectLabelFragment"
-            app:destination="@id/selectLabelFragment" />
+            app:destination="@id/selectLabelFragment"
+            app:enterAnim="@anim/anim_slide_left_enter"
+            app:exitAnim="@anim/anim_slide_left_exit"
+            app:popEnterAnim="@anim/anim_slide_left_enter_pop"
+            app:popExitAnim="@anim/anim_slide_left_exit_pop"
+            />
+        <argument
+            android:name="category"
+            app:argType="com.moon.model.Category"
+            />
     </fragment>
     <fragment
         android:id="@+id/selectLabelFragment"
         android:name="com.moon.ui.story.fragment.SelectLabelFragment"
         android:label="SelectLabelFragment"
-        tools:layout="@layout/fragment_select_label"/>
+        tools:layout="@layout/fragment_select_label">
+        <argument android:name="Story"
+            app:argType="com.moon.model.Story" />
+    </fragment>
 </navigation>

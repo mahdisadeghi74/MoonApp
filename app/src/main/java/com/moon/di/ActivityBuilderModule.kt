@@ -10,6 +10,8 @@ import com.moon.di.story.StoryModule
 import com.moon.di.story.StoryScope
 import com.moon.di.story.StoryViewModelModule
 import com.moon.ui.auth.AuthActivity
+import com.moon.ui.label.LabelViewModel
+import com.moon.ui.story.activity.AddStoryActivity
 import com.moon.ui.story.activity.StoryActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -27,4 +29,8 @@ abstract class ActivityBuilderModule {
     @StoryScope
     @ContributesAndroidInjector(modules = [StoryModule::class, StoryViewModelModule::class, StoryFragmentBuilderModule::class])
     abstract fun contributeStoryActivity(): StoryActivity
+
+    @StoryScope
+    @ContributesAndroidInjector(modules = [StoryModule::class, StoryViewModelModule::class, StoryFragmentBuilderModule::class])
+    abstract fun contributeAddStoryActivity(): AddStoryActivity
 }

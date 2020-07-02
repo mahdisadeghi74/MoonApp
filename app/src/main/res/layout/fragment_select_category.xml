@@ -4,31 +4,54 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_close_24"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:layout_margin="@dimen/margin_above_normal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="@dimen/margin_small"
+        android:id="@+id/imbCloseSelectCategory"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="@dimen/margin_above_normal"
+        android:layout_marginEnd="@dimen/margin_above_normal">
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="@dimen/margin_normal"
-            android:id="@+id/btnCategory"/>
+            android:id="@+id/btnStory"
+            android:textAllCaps="false"
+            android:text="@string/story"
+            android:background="@drawable/bg_ripple_corner_normal" />
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="@dimen/margin_normal"/>
+            android:layout_margin="@dimen/margin_normal"
+            android:text="@string/poem"
+            android:textAllCaps="false"
+            android:background="@drawable/bg_ripple_corner_normal"
+            android:id="@+id/btnPoem"/>
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_margin="@dimen/margin_normal"/>
+            android:layout_margin="@dimen/margin_normal"
+            android:textAllCaps="false"
+            android:text="@string/translate"
+            android:background="@drawable/bg_ripple_corner_normal"
+            android:id="@+id/btnTranslate"/>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

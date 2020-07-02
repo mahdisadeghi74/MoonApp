@@ -2,6 +2,7 @@ package com.moon.di.story
 
 import com.moon.model.LikeStory
 import com.moon.network.auth.RegisterApi
+import com.moon.network.label.GetLabelsApi
 import com.moon.network.story.ClapStoryApi
 import com.moon.network.story.GetStoriesApi
 import com.moon.ui.story.adapter.StoriesAdapter
@@ -28,5 +29,11 @@ class StoryModule {
     @StoryScope
     fun provideLikeStoryApi(retrofit: Retrofit): ClapStoryApi{
         return retrofit.create(ClapStoryApi::class.java)
+    }
+
+    @Provides
+    @StoryScope
+    fun provideLabelApi(retrofit: Retrofit): GetLabelsApi{
+        return retrofit.create(GetLabelsApi::class.java)
     }
 }

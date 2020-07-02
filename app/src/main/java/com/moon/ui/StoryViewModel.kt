@@ -66,6 +66,10 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
             mediatorLiveData.removeSource(source)
         })
     }
+
+    fun createStory(story: Story){
+
+    }
     fun observeClap(): MediatorLiveData<Response<LikeStory>> {
         return mediatorClapLiveData
     }

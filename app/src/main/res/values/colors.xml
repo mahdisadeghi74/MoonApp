@@ -5,6 +5,8 @@
     <color name="colorAccent">#1DBFCC</color>
     <color name="colorSoftWhite">#FAFAFA</color>
     <color name="colorSoftBlack">#212121</color>
+    <color name="colorAlphaLight">#0D212121</color>
+    <color name="colorAlphaDark">#0DFAFAFA</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorShadow">#12000000</color>

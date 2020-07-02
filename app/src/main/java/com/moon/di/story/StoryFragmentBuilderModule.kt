@@ -1,5 +1,6 @@
 package com.moon.di.story
 
+import com.moon.ui.story.fragment.SelectLabelFragment
 import com.moon.ui.story.fragment.ShowStoryFragment
 import com.moon.ui.story.fragment.StoryListFragment
 import dagger.Module
@@ -13,4 +14,7 @@ abstract class StoryFragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun contributeShowStoryFragment(): ShowStoryFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSelectLabelFragment(): SelectLabelFragment
 }

@@ -14,4 +14,8 @@
     <string name="branch">زیرشاخه</string>
     <string name="title">عنوان</string>
     <string name="story_content">متن</string>
+    <string name="story">داستان</string>
+    <string name="translate">ترجمه</string>
+    <string name="poem">شعر</string>
+    <string name="label">برچسب</string>
 </resources>

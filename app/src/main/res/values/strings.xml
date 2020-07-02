@@ -13,4 +13,8 @@
     <string name="branch">Branch</string>
     <string name="title">Title</string>
     <string name="story_content">Content</string>
+    <string name="story">Story</string>
+    <string name="translate">Translate</string>
+    <string name="poem">Poem</string>
+    <string name="label">Label</string>
 </resources>
