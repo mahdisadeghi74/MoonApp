@@ -1,4 +1,5 @@
 package com.moon.ui
+
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
@@ -14,11 +15,12 @@ import javax.inject.Inject
 import io.reactivex.functions.Function
 import java.util.concurrent.TimeUnit
 
-class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesApi): ViewModel(){
+class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesApi) : ViewModel() {
     var mediatorLiveData: MediatorLiveData<Response<ArrayList<Story>>> = MediatorLiveData()
     var mediatorClapLiveData: MediatorLiveData<Response<LikeStory>> = MediatorLiveData()
 
-    @Inject lateinit var token: Token
+    @Inject
+    lateinit var token: Token
 
     fun getStories(story: Story){
         var source = LiveDataReactiveStreams.fromPublisher<Response<ArrayList<Story>>> (
@@ -38,7 +40,7 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
                     }else Response.success(data = it)
                 })
                 .subscribeOn(Schedulers.io())
-            )
+        )
 
         mediatorLiveData.addSource(source, Observer {
             mediatorLiveData.value = it
@@ -46,13 +48,13 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
         })
     }
 
-    fun clapStory(storyId: String, clapCount: Int){
+    fun clapStory(storyId: String, clapCount: Int) {
         var source = LiveDataReactiveStreams.fromPublisher<Response<LikeStory>>(
             getStoriesApi.likeStory(storyId = storyId, token = token.token, clap = clapCount)
                 .onErrorReturn {
                     LikeStory().also { it.id = -1 }
                 }
-                .map(Function<LikeStory, Response<LikeStory>>{
+                .map(Function<LikeStory, Response<LikeStory>> {
                     if (it.id == -1)
                         Response.error(message = "error")
                     else Response.success(data = it)
@@ -67,13 +69,15 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
         })
     }
 
-    fun createStory(story: Story){
+    fun createStory(story: Story) {
 
     }
+
     fun observeClap(): MediatorLiveData<Response<LikeStory>> {
         return mediatorClapLiveData
     }
-    fun observe(): LiveData<Response<ArrayList<Story>>>{
+
+    fun observe(): LiveData<Response<ArrayList<Story>>> {
         return mediatorLiveData
     }
 }
