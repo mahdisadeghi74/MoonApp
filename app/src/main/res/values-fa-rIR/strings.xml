@@ -13,6 +13,7 @@
     <string name="merge">ادغام</string>
     <string name="branch">زیرشاخه</string>
     <string name="title">عنوان</string>
+    <string name="branch_name">نام شاخه</string>
     <string name="story_content">متن</string>
     <string name="story">داستان</string>
     <string name="translate">ترجمه</string>

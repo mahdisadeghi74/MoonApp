@@ -34,11 +34,13 @@ class SelectCategoryFragment : Fragment() {
         }
         view.btnStory.setOnClickListener {
             category = Category(id = Category.STORY_ID)
-            view.btnPoem.callOnClick()
+            view.findNavController().navigate(SelectCategoryFragmentDirections.actionSelectCategoryFragmentToAddStoryContentFragment(
+                category!!))
         }
         view.btnTranslate.setOnClickListener {
             category = Category(id = Category.TRANSLATE_ID)
-            view.btnPoem.callOnClick()
+            view.findNavController().navigate(SelectCategoryFragmentDirections.actionSelectCategoryFragmentToAddStoryContentFragment(
+                category!!))
         }
 
         imbCloseSelectCategory.setOnClickListener {

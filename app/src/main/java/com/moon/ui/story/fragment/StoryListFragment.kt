@@ -15,7 +15,9 @@ import com.moon.model.Story
 import com.moon.ui.StoryViewModel
 import com.moon.ui.story.adapter.StoriesAdapter
 import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_story_list.*
 import kotlinx.android.synthetic.main.fragment_story_list.view.*
+import kotlinx.android.synthetic.main.fragment_story_list.view.rvStories
 import javax.inject.Inject
 
 class StoryListFragment : DaggerFragment() {
@@ -41,7 +43,6 @@ class StoryListFragment : DaggerFragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         setRecyclerView()
-
         storyViewModel =
             ViewModelProviders.of(this, viewModelProvidersFactory).get(StoryViewModel::class.java)
 
@@ -67,5 +68,10 @@ class StoryListFragment : DaggerFragment() {
         storyViewModel.observe().observe(requireActivity(), Observer {
             it.data?.let { data -> storiesAdapter.setStories(data) }
         })
+    }
+
+    override fun onDestroyView() {
+        rvStories.adapter = null
+        super.onDestroyView()
     }
 }

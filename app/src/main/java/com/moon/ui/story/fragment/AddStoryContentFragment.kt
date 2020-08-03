@@ -26,7 +26,7 @@ class AddStoryContentFragment : Fragment() {
         category = args.category
 
         imbNext.setOnClickListener {
-            story = Story(title = etStoryTitle.text.toString(), content = context.toString(), category = category)
+            story = Story(title = etStoryTitle.text.toString(), content = etStoryContent.text.toString(), category = category)
             view.findNavController().navigate(AddStoryContentFragmentDirections.actionAddStoryContentFragmentToSelectLabelFragment(Story = story))
         }
 

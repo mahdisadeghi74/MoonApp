@@ -25,7 +25,9 @@ import com.moon.R
 import com.moon.model.Story
 import com.moon.ui.StoryViewModel
 import com.moon.ui.story.adapter.StoriesAdapter
+import com.moon.ui.story.fragment.AddBranchFragment
 import com.moon.ui.story.fragment.ShowStoryFragmentArgs
+import com.moon.ui.story.fragment.ShowStoryFragmentDirections
 import com.moon.ui.story.fragment.StoryListFragmentDirections
 import com.skydoves.balloon.*
 import dagger.android.support.DaggerAppCompatActivity
@@ -119,11 +121,10 @@ class StoryActivity : DaggerAppCompatActivity() {
             when (menuItem.itemId) {
                 R.id.mnBranch -> {
                     Log.d("TAG", "onCreate: add_Branch")
-
+                    navigationController.navigate(ShowStoryFragmentDirections.actionShowStoryFragmentToAddBranchFragment(storyId = selectedStory?.id ?: ""))
                 }
                 R.id.mnMerge -> {
                     Log.d("TAG", "onCreate: add_Merge")
-
                 }
             }
             true

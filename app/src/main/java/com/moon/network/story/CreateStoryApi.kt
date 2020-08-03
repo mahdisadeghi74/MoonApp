@@ -1,16 +1,20 @@
 package com.moon.network.story
 
+import com.moon.model.Story
 import com.moon.model.Token
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import io.reactivex.Flowable
+import retrofit2.http.*
 
 interface CreateStoryApi {
     @POST("createStory/")
     @FormUrlEncoded
     fun createStory(
-        @Header("Authorization") token: String,
-        @Field("title") title: String
-    )
+        @Header("Authorization") token: String? = "",
+        @Field("title") title: String? = "",
+        @Field("content") content: String? = "",
+        @Field("category") category: Int? = 0,
+        @Field("label") label: String? = "",
+        @Field("branch") branch: String? = "",
+        @Field("currentStory") currentStory: String? = ""
+    ): Flowable<Story>
 }

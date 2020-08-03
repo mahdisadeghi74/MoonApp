@@ -1,5 +1,6 @@
 package com.moon.ui.story.fragment
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.navArgs
 import com.dependencies.buria.android.support.daggerktx2.viewmodel.ViewModelProvidersFactory
 import com.moon.R
 import com.moon.model.Label
@@ -27,17 +29,26 @@ class SelectLabelFragment : DaggerFragment() {
     lateinit var labelViewMode: LabelViewModel
     lateinit var storyViewModel: StoryViewModel
 
+    val args: SelectLabelFragmentArgs by navArgs()
+    var story: Story? = null
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         Log.d("TAG", "observe:label 4")
         labelViewMode = ViewModelProviders.of(this, viewModelProvidersFactory).get(LabelViewModel::class.java)
         storyViewModel = ViewModelProviders.of(this, viewModelProvidersFactory).get(StoryViewModel::class.java)
 
+        story = args.Story
         labelViewMode.getLabels()
         observe()
 
     }
 
+    private fun observeAddStory() {
+        storyViewModel.observeAddStory().observe(viewLifecycleOwner, Observer {
+            Log.d(TAG, "observeAddStory: ${it.status} : ${it.data?.id}")
+            requireActivity().finish()
+        })
+    }
     private fun observe() {
         labelViewMode.observe().observe(viewLifecycleOwner, Observer {
             Log.d("TAG", "observe:label ${it.data}")
@@ -52,7 +63,8 @@ class SelectLabelFragment : DaggerFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imbNext.setOnClickListener {
-            storyViewModel.createStory(story = Story())
+            storyViewModel.createStory(story = story ?: Story())
+            observeAddStory()
         }
 
         imbBack.setOnClickListener {

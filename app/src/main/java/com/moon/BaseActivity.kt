@@ -13,6 +13,7 @@ import com.moon.ui.auth.AuthViewModel
 import com.moon.ui.story.activity.StoryActivity
 import com.moon.util.Constants
 import dagger.android.support.DaggerAppCompatActivity
+import leakcanary.LeakCanary
 import javax.inject.Inject
 
 

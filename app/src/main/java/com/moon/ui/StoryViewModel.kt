@@ -1,5 +1,6 @@
 package com.moon.ui
 
+import android.content.ContentValues.TAG
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
@@ -9,15 +10,20 @@ import androidx.lifecycle.ViewModel
 import com.moon.model.LikeStory
 import com.moon.model.Story
 import com.moon.model.Token
+import com.moon.network.story.CreateStoryApi
+import com.moon.network.story.CreateStoryBranchApi
 import com.moon.network.story.GetStoriesApi
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 import io.reactivex.functions.Function
 import java.util.concurrent.TimeUnit
+import kotlin.math.log
 
-class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesApi) : ViewModel() {
+class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesApi, private var createStoryApi: CreateStoryApi,
+                                         private var createStoryBranchApi: CreateStoryBranchApi) : ViewModel() {
     var mediatorLiveData: MediatorLiveData<Response<ArrayList<Story>>> = MediatorLiveData()
     var mediatorClapLiveData: MediatorLiveData<Response<LikeStory>> = MediatorLiveData()
+    var mediatorAddStory: MediatorLiveData<Response<Story>> = MediatorLiveData()
 
     @Inject
     lateinit var token: Token
@@ -49,7 +55,7 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
     }
 
     fun clapStory(storyId: String, clapCount: Int) {
-        var source = LiveDataReactiveStreams.fromPublisher<Response<LikeStory>>(
+        val source = LiveDataReactiveStreams.fromPublisher<Response<LikeStory>>(
             getStoriesApi.likeStory(storyId = storyId, token = token.token, clap = clapCount)
                 .onErrorReturn {
                     LikeStory().also { it.id = -1 }
@@ -70,7 +76,55 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
     }
 
     fun createStory(story: Story) {
+        val source = LiveDataReactiveStreams.fromPublisher<Response<Story>>(
+            createStoryApi.createStory(token = token.token,
+                title = story.title,
+                category = story.category?.id,
+                content = story.content,
+                branch = story.branch,
+                currentStory = story.id,
+                label = "test"
+            )
+                .onErrorReturn {
+                    Story().also {
+                        it.id = "-1"
+                        it.title = it.toString()
+                    }
+                }
+                .map(Function<Story, Response<Story>>{
+                    if (it.id == "-1")
+                        Response.error(message = it.title)
+                    else Response.success(data = story)
+                })
+                .subscribeOn(Schedulers.io())
+        )
+        mediatorAddStory.addSource(source, Observer {
+            mediatorAddStory.value = it;
+            mediatorAddStory.removeSource(source)
+        })
+    }
 
+    fun createBranch(storyId: String, branchName: String) {
+        val source = LiveDataReactiveStreams.fromPublisher<Response<Story>>(
+            createStoryBranchApi.createStoryBranch(storyId = storyId, branch = branchName, token = token.token)
+                .onErrorReturn {throwable ->
+                    Story().also {
+                        it.id = "-1"
+                        it.title = throwable.toString()
+                    }
+                }
+                .map(Function<Story, Response<Story>>{
+                    Log.d(TAG, "createBranch: ${it.title}")
+                    if (it.id == "-1")
+                        Response.error(message = it.title)
+                    else Response.success(data = it)
+                })
+                .subscribeOn(Schedulers.io())
+        )
+        mediatorAddStory.addSource(source, Observer {
+            mediatorAddStory.value = it;
+            mediatorAddStory.removeSource(source)
+        })
     }
 
     fun observeClap(): MediatorLiveData<Response<LikeStory>> {
@@ -79,5 +133,8 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
 
     fun observe(): LiveData<Response<ArrayList<Story>>> {
         return mediatorLiveData
+    }
+    fun observeAddStory(): LiveData<Response<Story>> {
+        return mediatorAddStory
     }
 }

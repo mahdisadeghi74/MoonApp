@@ -1,5 +1,6 @@
 package com.moon.ui.story.adapter
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +11,7 @@ import com.moon.R
 import com.moon.model.Story
 import kotlinx.android.synthetic.main.layout_story_item.view.*
 
-class StoriesAdapter : RecyclerView.Adapter<StoriesAdapter.ViewHolder>() {
+class StoriesAdapter() : RecyclerView.Adapter<StoriesAdapter.ViewHolder>() {
     private var stories: ArrayList<Story>? = null
     var onClickListenerItem: ((Story, Int, View) -> Unit)? = null
 
