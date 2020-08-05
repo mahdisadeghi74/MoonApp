@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/merge_request_nav_graph"
+    app:startDestination="@id/mergeRequestsFragment">
+
+    <fragment
+        android:id="@+id/mergeRequestsFragment"
+        android:name="com.moon.ui.story.fragment.MergeRequestsFragment"
+        android:label="MergeRequestsFragment"
+        tools:layout="@layout/fragment_merge_request_fragment">
+        <action
+            android:id="@+id/action_mergeRequestsFragment_to_submitMergeRequestFragment"
+            app:destination="@id/submitMergeRequestFragment"
+            app:launchSingleTop="true"/>
+        <argument
+            android:name="story"
+            app:argType="com.moon.model.Story" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/submitMergeRequestFragment"
+        android:name="com.moon.ui.story.fragment.SubmitMergeRequestFragment"
+        android:label="SubmitMergeRequestFragment"
+        tools:layout="@layout/fragment_submit_merge_request">
+        <argument
+            android:name="story"
+            app:argType="com.moon.model.Story" />
+    </fragment>
+</navigation>

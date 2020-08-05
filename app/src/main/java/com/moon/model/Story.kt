@@ -17,7 +17,7 @@ class Story(
     @SerializedName("branch") @Expose var branch: String = "",
     @SerializedName("currentStory") @Expose var currentStory: Int? = null,
     @SerializedName("created_by") var created_by: String? = "",
-    @SerializedName("parent") @Expose var parent: Int? = null,
+    @SerializedName("parent") @Expose var parent: String? = "",
     @SerializedName("id") @Expose var id: String? = "",
     @SerializedName("clapCount") @Expose var clapCount: Int? = 0,
 

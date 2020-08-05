@@ -1,9 +1,6 @@
 package com.moon.di.story
 
-import com.moon.ui.story.fragment.AddBranchFragment
-import com.moon.ui.story.fragment.SelectLabelFragment
-import com.moon.ui.story.fragment.ShowStoryFragment
-import com.moon.ui.story.fragment.StoryListFragment
+import com.moon.ui.story.fragment.*
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -21,4 +18,10 @@ abstract class StoryFragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun contributeAddBranchFragment(): AddBranchFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeMergeRequestsFragment(): MergeRequestsFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSubmitMergeRequestFragment(): SubmitMergeRequestFragment
 }

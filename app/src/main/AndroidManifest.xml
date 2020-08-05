@@ -13,7 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.story.activity.AddStoryActivity"></activity>
+        <activity android:name=".ui.story.activity.MergeRequestsActivity"></activity>
+        <activity android:name=".ui.story.activity.EditStoryActivity" />
+        <activity android:name=".ui.story.activity.JoinRequestActivity" />
+        <activity android:name=".ui.story.activity.AddStoryActivity" />
         <activity android:name=".ui.story.activity.StoryActivity" />
         <activity
             android:name=".SplashActivity"

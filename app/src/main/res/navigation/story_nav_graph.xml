@@ -41,9 +41,5 @@
         <argument
             android:name="storyId"
             app:argType="string" />
-        <action
-            android:id="@+id/action_addBranchFragment_to_showStoryFragment"
-            app:destination="@id/showStoryFragment"
-            />
     </fragment>
 </navigation>

@@ -19,4 +19,10 @@
     <string name="translate">ترجمه</string>
     <string name="poem">شعر</string>
     <string name="label">برچسب</string>
+    <string name="profile_account">صفحه پروفایل</string>
+    <string name="join_story">ملحق شدن</string>
+    <string name="edit_story">ویرایش</string>
+    <string name="merge_request_sent_success">درخواست شما ارسال شد</string>
+    <string name="merge_request_sent_error">درخواست شما ارسال نشد و با خطا همراه بود</string>
+    <string name="show_merge_requests">نمایش درخواست های ادغام</string>
 </resources>

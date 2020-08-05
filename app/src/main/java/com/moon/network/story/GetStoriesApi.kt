@@ -12,7 +12,8 @@ interface GetStoriesApi {
     @FormUrlEncoded
     fun getStories(
         @Header("Authorization") token: String? = "",
-        @Field("search") search: String? = ""
+        @Field("search") search: String? = "",
+        @Field("parent") parentId: String? = ""
     ): Flowable<ArrayList<Story>>
 
     @POST("likeStory/")

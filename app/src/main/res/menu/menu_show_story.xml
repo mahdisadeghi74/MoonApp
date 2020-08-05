@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <group android:id="@+id/gpJoinStory">
+        <item android:id="@+id/mnJoinStory"
+            android:title="@string/join_story"/>
+    </group>
+
+    <group android:id="@+id/gpAccessStory">
+        <item android:id="@+id/mnEdit"
+            android:title="@string/edit_story"/>
+
+        <item android:id="@+id/mnShowMergeRequests"
+            android:title="@string/show_merge_requests"/>
+    </group>
+
     <item
         android:id="@+id/mnBranch"
         android:icon="@drawable/ic_branching"
@@ -12,4 +26,5 @@
         android:icon="@drawable/ic_merge_type_24"
         android:title="@string/merge"
         app:showAsAction="ifRoom"/>
+
 </menu>

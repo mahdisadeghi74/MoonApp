@@ -18,4 +18,10 @@
     <string name="translate">Translate</string>
     <string name="poem">Poem</string>
     <string name="label">Label</string>
+    <string name="profile_account">Profile Account</string>
+    <string name="join_story">Join to Story</string>
+    <string name="edit_story">Edit</string>
+    <string name="merge_request_sent_success">Your Request sent</string>
+    <string name="merge_request_sent_error">Your Request not sent</string>
+    <string name="show_merge_requests">Show merge requests</string>
 </resources>

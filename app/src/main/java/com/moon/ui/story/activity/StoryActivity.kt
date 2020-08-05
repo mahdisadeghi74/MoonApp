@@ -63,7 +63,7 @@ class StoryActivity : DaggerAppCompatActivity() {
                             currentFragment = R.id.showStoryFragment
                         }
                         BottomAppBar.FAB_ALIGNMENT_MODE_END -> {
-                            bapShowStory.replaceMenu(R.menu.menu_show_story)
+                            bapShowStory.replaceMenu(R.menu.menu_main)
                             bapShowStory.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
                             fabStory.setImageDrawable(getDrawable(R.drawable.ic_add_24))
                             currentFragment = R.id.storyListFragment
@@ -125,6 +125,19 @@ class StoryActivity : DaggerAppCompatActivity() {
                 }
                 R.id.mnMerge -> {
                     Log.d("TAG", "onCreate: add_Merge")
+                    startActivity(Intent(applicationContext, JoinRequestActivity::class.java).putExtra("story", selectedStory),
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
+                }
+                R.id.mnJoinStory -> {
+                    storyViewModel.joinStory(storyId = selectedStory?.id ?: "")
+                }
+                R.id.mnEdit -> {
+                    startActivity(Intent(applicationContext, EditStoryActivity::class.java).putExtra("story", selectedStory),
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
+                }
+                R.id.mnShowMergeRequests -> {
+                    startActivity(Intent(applicationContext, MergeRequestsActivity::class.java).putExtra("story", selectedStory),
+                        ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
                 }
             }
             true

@@ -1,5 +1,7 @@
 package com.moon.util
 
+import android.opengl.Visibility
+import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
@@ -12,4 +14,13 @@ fun <T> Fragment.getNavigationResultLiveData(key: String = "result") =
 
 fun <T> Fragment.setNavigationResult(result: T, key: String = "result"){
     findNavController().previousBackStackEntry?.savedStateHandle?.set(key, result)
+}
+
+/// views
+fun View.show(){
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide(){
+    this.visibility = View.GONE
 }

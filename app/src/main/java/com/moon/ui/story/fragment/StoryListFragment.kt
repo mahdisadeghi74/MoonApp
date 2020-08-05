@@ -46,7 +46,7 @@ class StoryListFragment : DaggerFragment() {
         storyViewModel =
             ViewModelProviders.of(this, viewModelProvidersFactory).get(StoryViewModel::class.java)
 
-        storyViewModel.getStories(Story())
+        storyViewModel.getStories(Story().also { it.parent = null })
 
         storiesAdapter.onClickListenerItem = { story , position, itemView->
             onClickListenerItem?.let { function ->  function(story) }
