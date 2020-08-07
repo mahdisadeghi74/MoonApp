@@ -13,8 +13,10 @@ import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
-class ComparativeViewModel @Inject constructor(private var comparisonTwoStoriesApi: ComparisonTwoStoriesApi): ViewModel() {
+class ComparativeViewModel @Inject constructor(private var comparisonTwoStoriesApi: ComparisonTwoStoriesApi,
+                                               private var submitMergeRequestStoryApi: SubmitMergeRequestStoryApi): ViewModel() {
     var mediatorLiveData = MediatorLiveData<Response<Comparative>>()
+    var mediatorSubmitStory = MediatorLiveData<Response<Story>>()
 
     @Inject
     lateinit var token: Token
@@ -39,7 +41,30 @@ class ComparativeViewModel @Inject constructor(private var comparisonTwoStoriesA
         })
     }
 
+    fun submitStory(story: Story){
+        var source = LiveDataReactiveStreams.fromPublisher<Response<Story>>(
+            submitMergeRequestStoryApi.mergeRequest(storyId = story.id, content = story.content, token = token.token)
+                .onErrorReturn {
+                    Story(id = "-1", content = it.toString())
+                }
+                .map(Function<Story, Response<Story>>{
+                    Log.d(TAG, "submitStory: ${it.content}")
+                    if (it.id != "-1"){
+                        Response.success(data = it)
+                    }else Response.error(data = it, message = it.content)
+                })
+                .subscribeOn(Schedulers.io())
+        )
+
+        mediatorSubmitStory.addSource(source, Observer {
+            mediatorSubmitStory.value = it
+            mediatorSubmitStory.removeSource(source)
+        })
+    }
     fun observeComparative(): LiveData<Response<Comparative>>{
         return mediatorLiveData
+    }
+    fun observeSubmitStory(): LiveData<Response<Story>>{
+        return mediatorSubmitStory
     }
 }

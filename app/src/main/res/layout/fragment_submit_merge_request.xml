@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding_above_normal">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="@string/new_text"
+        android:textStyle="bold"
+        android:textColor="?attr/textColorBase"
+        android:id="@+id/tvNewText"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnAcceptBottom"
+        android:text="@string/old_text"
+        android:textStyle="bold"
+        android:textColor="?attr/textColorBase"
+        android:id="@+id/tvOldText"/>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/nsvOld"
-        app:layout_constraintTop_toBottomOf="@+id/nsvNew"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvOldText"
+        app:layout_constraintBottom_toTopOf="@+id/btnAcceptBottom"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="@dimen/margin_normal">
 
         <EditText
-            android:id="@+id/etNewContent"
+            android:id="@+id/etOldContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/margin_normal"
@@ -27,17 +51,43 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:id="@+id/nsvNew"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNewText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/nsvOld">
+        app:layout_constraintBottom_toTopOf="@+id/tvOldText">
 
         <EditText
-            android:id="@+id/etOldContent"
+            android:id="@+id/etNewContent"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="top"
             />
     </androidx.core.widget.NestedScrollView>
 
+    <Button
+        android:id="@+id/btnAcceptTop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnAcceptBottom"
+        android:text="@string/accept_top"
+        android:textAllCaps="false"
+        android:background="@drawable/gb_button_corner8"
+        android:backgroundTint="@color/colorGreen"
+        android:layout_marginStart="@dimen/margin_normal"
+        />
+
+    <Button
+        android:id="@+id/btnAcceptBottom"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnAcceptTop"
+        android:text="@string/accept_bottom"
+        android:textAllCaps="false"
+        android:background="@drawable/gb_button_corner8"
+        android:backgroundTint="@color/colorRed"
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

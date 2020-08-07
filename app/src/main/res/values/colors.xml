@@ -10,4 +10,6 @@
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
     <color name="colorShadow">#12000000</color>
+    <color name="colorRed">#ff6347</color>
+    <color name="colorGreen">#00E676</color>
 </resources>

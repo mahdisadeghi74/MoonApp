@@ -24,4 +24,8 @@
     <string name="merge_request_sent_success">Your Request sent</string>
     <string name="merge_request_sent_error">Your Request not sent</string>
     <string name="show_merge_requests">Show merge requests</string>
+    <string name="accept_top">Accept top</string>
+    <string name="accept_bottom">Accept bottom</string>
+    <string name="new_text">New text</string>
+    <string name="old_text">Old Text</string>
 </resources>

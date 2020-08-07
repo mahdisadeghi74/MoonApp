@@ -25,4 +25,8 @@
     <string name="merge_request_sent_success">درخواست شما ارسال شد</string>
     <string name="merge_request_sent_error">درخواست شما ارسال نشد و با خطا همراه بود</string>
     <string name="show_merge_requests">نمایش درخواست های ادغام</string>
+    <string name="accept_top">تایید بالایی</string>
+    <string name="accept_bottom">تایید پایینی</string>
+    <string name="new_text">متن جدید</string>
+    <string name="old_text">متن قبلی</string>
 </resources>

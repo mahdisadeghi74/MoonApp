@@ -9,13 +9,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.core.widget.NestedScrollView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dependencies.buria.android.support.daggerktx2.viewmodel.ViewModelProvidersFactory
 import com.moon.R
 import com.moon.model.Story
+import com.moon.ui.Response
 import com.moon.ui.StoryViewModel
 import com.moon.ui.comparative.ComparativeViewModel
 import dagger.android.support.DaggerFragment
@@ -51,6 +54,19 @@ class SubmitMergeRequestFragment : DaggerFragment() {
             comparativeViewModel.comparisionStories(selectedStory!!)
         observe()
         changeScrollViews()
+
+        btnAcceptTop.setOnClickListener {
+            if (selectedStory != null) {
+                selectedStory?.content = etOldContent.text.toString()
+                comparativeViewModel.submitStory(selectedStory!!)
+            }
+        }
+        btnAcceptBottom.setOnClickListener {
+            if (selectedStory != null) {
+                selectedStory?.content = etNewContent.text.toString()
+                comparativeViewModel.submitStory(selectedStory!!)
+            }
+        }
     }
 
     private fun changeScrollViews() {
@@ -68,7 +84,7 @@ class SubmitMergeRequestFragment : DaggerFragment() {
             val spannableDelete = SpannableString(it.data?.storyContentOld)
             it.data?.addPosition?.forEach {
                 spannableAdd.setSpan(
-                    BackgroundColorSpan(Color.GREEN),
+                    BackgroundColorSpan(context?.resources?.getColor(R.color.colorGreen)!!),
                     it,
                     it + 1,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -76,7 +92,7 @@ class SubmitMergeRequestFragment : DaggerFragment() {
             }
             it.data?.deletePosition?.forEach {
                 spannableDelete.setSpan(
-                    BackgroundColorSpan(Color.RED),
+                    BackgroundColorSpan(context?.resources?.getColor(R.color.colorRed)!!),
                     it,
                     it + 1,
                     Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -86,7 +102,12 @@ class SubmitMergeRequestFragment : DaggerFragment() {
             etOldContent.setText(spannableDelete)
             etNewContent.setText(spannableAdd)
         })
+
+        comparativeViewModel.observeSubmitStory().observe(viewLifecycleOwner, Observer {
+            if (it.status == Response.Status.SUCCESS) {
+                Toast.makeText(context, "accepted", Toast.LENGTH_SHORT).show()
+                view?.findNavController()?.navigateUp()
+            } else Toast.makeText(context, "have a problem", Toast.LENGTH_SHORT).show()
+        })
     }
-
-
 }
