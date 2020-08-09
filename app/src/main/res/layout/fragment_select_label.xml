@@ -34,6 +34,20 @@
         android:layout_marginStart="@dimen/margin_above_normal"
         android:layout_marginEnd="@dimen/margin_above_normal"
         android:hint="@string/label"
+        android:imeOptions="actionDone"
         android:id="@+id/actLabel"
-        android:layout_marginTop="@dimen/margin_above_normal"/>
+        android:maxLength="30"
+        android:layout_marginTop="@dimen/margin_above_normal"
+        android:inputType="text"/>
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/actLabel"
+        android:layout_marginTop="@dimen/margin_normal"
+        android:layout_marginStart="@dimen/padding_above_normal"
+        android:layout_marginEnd="@dimen/padding_above_normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:id="@+id/chgLabels"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,9 +31,9 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
     @Inject
     lateinit var token: Token
 
-    fun getStories(story: Story){
+    fun getStories(story: Story, search: String ?= null){
         var source = LiveDataReactiveStreams.fromPublisher<Response<ArrayList<Story>>> (
-            getStoriesApi.getStories(search = story.title, parentId = story.id, token = token.token)
+            getStoriesApi.getStories(search = search, parentId = story.id, token = token.token)
                 .onErrorReturn {
                     Log.d("TAG", "getStories: error return: ${it.message}")
                     ArrayList<Story>().also { story ->
@@ -79,6 +79,8 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
     }
 
     fun createStory(story: Story) {
+        val labels = arrayListOf<String>()
+        story.label.forEach { labels.add(it.name) }
         val source = LiveDataReactiveStreams.fromPublisher<Response<Story>>(
             createStoryApi.createStory(token = token.token,
                 title = story.title,
@@ -86,7 +88,7 @@ class StoryViewModel @Inject constructor(private var getStoriesApi: GetStoriesAp
                 content = story.content,
                 branch = story.branch,
                 currentStory = story.id,
-                label = "test"
+                label = labels
             )
                 .onErrorReturn {
                     Story().also {

@@ -1,10 +1,15 @@
 package com.moon.ui.story.activity
 
 import android.app.ActivityOptions
+import android.app.SearchManager
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
 import android.widget.LinearLayout
+import android.widget.SearchView
 import android.widget.Toast
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat
@@ -25,10 +30,7 @@ import com.moon.R
 import com.moon.model.Story
 import com.moon.ui.StoryViewModel
 import com.moon.ui.story.adapter.StoriesAdapter
-import com.moon.ui.story.fragment.AddBranchFragment
-import com.moon.ui.story.fragment.ShowStoryFragmentArgs
-import com.moon.ui.story.fragment.ShowStoryFragmentDirections
-import com.moon.ui.story.fragment.StoryListFragmentDirections
+import com.moon.ui.story.fragment.*
 import com.skydoves.balloon.*
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_story_acticity.*
@@ -79,6 +81,9 @@ class StoryActivity : DaggerAppCompatActivity() {
         navigationController.addOnDestinationChangedListener { _, destination, bundle ->
             selectedStory = bundle?.getParcelable("story")
             fabStory.hide(addVisibilityChange)
+            if (fragment2.findNavController().currentDestination?.id == R.id.showStoryFragment) {
+                storyViewModel.clapStory(selectedStory?.id ?: "", 0)
+            }
         }
 
         // fabStory onClick listener
@@ -134,6 +139,9 @@ class StoryActivity : DaggerAppCompatActivity() {
                 R.id.mnEdit -> {
                     startActivity(Intent(applicationContext, EditStoryActivity::class.java).putExtra("story", selectedStory),
                         ActivityOptionsCompat.makeSceneTransitionAnimation(this).toBundle())
+                }
+                R.id.mnSearch -> {
+                    navigationController.navigate(StoryListFragmentDirections.actionStoryListFragmentToSearchStoryFragment())
                 }
                 R.id.mnShowMergeRequests -> {
                     startActivity(Intent(applicationContext, MergeRequestsActivity::class.java).putExtra("story", selectedStory),

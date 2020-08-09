@@ -13,7 +13,7 @@ interface CreateStoryApi {
         @Field("title") title: String? = "",
         @Field("content") content: String? = "",
         @Field("category") category: Int? = 0,
-        @Field("label") label: String? = "",
+        @Field("label") label: ArrayList<String>? = null,
         @Field("branch") branch: String? = "",
         @Field("currentStory") currentStory: String? = ""
     ): Flowable<Story>

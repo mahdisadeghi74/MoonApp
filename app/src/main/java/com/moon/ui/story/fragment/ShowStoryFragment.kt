@@ -12,11 +12,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.transition.TransitionInflater
 import com.moon.R
 import com.moon.model.Story
-import com.moon.util.getNavigationResult
 import com.moon.util.getNavigationResultLiveData
 import dagger.android.support.DaggerFragment
 import kotlinx.android.synthetic.main.fragment_show_story.*
-
 class ShowStoryFragment : DaggerFragment() {
 
     val args: ShowStoryFragmentArgs by navArgs()
@@ -34,11 +32,13 @@ class ShowStoryFragment : DaggerFragment() {
             .inflateTransition(android.R.transition.move)
         sharedElementReturnTransition = TransitionInflater.from(context)
             .inflateTransition(android.R.transition.move)
+
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         var story = args.story
+
 
         tvStoryAuthor.text = story?.created_by
         tvStoryDate.text = story?.publish

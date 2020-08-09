@@ -24,4 +24,7 @@ abstract class StoryFragmentBuilderModule {
 
     @ContributesAndroidInjector
     abstract fun contributeSubmitMergeRequestFragment(): SubmitMergeRequestFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeSearchStoryFragment(): SearchStoryFragment
 }

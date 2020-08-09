@@ -15,6 +15,14 @@
             app:destination="@id/showStoryFragment"
             app:launchSingleTop="true"
             />
+        <action
+            android:id="@+id/action_storyListFragment_to_searchStoryFragment"
+            app:destination="@id/searchStoryFragment"
+            app:enterAnim="@anim/anim_slide_bottom_to_top"
+            app:popEnterAnim="@anim/anim_slide_top_to_bottom"
+            app:exitAnim="@anim/anim_slide_top_to_bottom_exit"
+            app:popExitAnim="@anim/anim_slide_bottom_to_top_exit"
+            />
     </fragment>
 
     <fragment
@@ -41,5 +49,14 @@
         <argument
             android:name="storyId"
             app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchStoryFragment"
+        android:name="com.moon.ui.story.fragment.SearchStoryFragment"
+        android:label="SearchStoryFragment"
+        tools:layout="@layout/fragment_search_story">
+        <action
+            android:id="@+id/action_searchStoryFragment_to_showStoryFragment"
+            app:destination="@id/showStoryFragment" />
     </fragment>
 </navigation>
